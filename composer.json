@@ -1,0 +1,25 @@
+{
+    "name": "petterthowsen/webdev",
+    "description": "Command-line utility for webdev that creates folders, databases and updates your hosts file.",
+    "type": "library",
+    "require": {
+        "symfony/console": "^5.2",
+        "illuminate/config": "^8.21"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Petter Thowsen",
+            "email": "petterthowsen@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "PetterThowsen\\Webdev\\": "src/"
+        }
+    },
+    "bin": [
+        "webdev"
+    ]
+}

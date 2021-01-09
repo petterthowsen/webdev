@@ -1,0 +1,15 @@
+<VirtualHost *:80>
+    ServerAdmin webmaster@${name}.${tld}
+    DocumentRoot "${directory}"
+    ServerName ${name}.${tld}
+    ServerAlias www.${name}.${tld}
+    <Directory "${directory}">
+        Options Indexes FollowSymLinks
+
+        AllowOverride All
+	Require local
+    </Directory>
+    
+    #ErrorLog "logs/${name}.${tld}-error.log"
+    #CustomLog "logs/${name}.${tld}-access.log" common
+</VirtualHost>

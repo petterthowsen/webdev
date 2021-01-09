@@ -1,0 +1,15 @@
+#!/usr/bin/env php
+<?php
+
+if (file_exists(__DIR__.'/vendor/autoload.php')) {
+	require __DIR__.'/vendor/autoload.php';
+} else {
+	require __DIR__.'/../../autoload.php';
+}
+
+define('WEBDEV_CONFIG_FILE', __DIR__ .'/config.php');
+define('WEBDEV_ROOT', __DIR__);
+define('WEBDEV_VHOST_TEMPLATE_FILE', __DIR__ .DIRECTORY_SEPARATOR .'vhost_template.html');
+define('WEBDEV_CONFIGURED', file_exists(WEBDEV_CONFIG_FILE));
+
+\PetterThowsen\Webdev\Console::getInstance()->run();

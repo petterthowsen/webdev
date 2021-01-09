@@ -81,7 +81,7 @@ class SetupCommand extends Command
         if ($this->confirm('add site to hosts file?')) {
             $config->set('hosts.enabled', true);
             $hostsfile = '/etc/hosts';
-            
+
             if (Console::isWindows()) {
                 $hostsfile = 'C:\\Windows\\System32\\drivers\\etc\\hosts';
             }
@@ -92,7 +92,7 @@ class SetupCommand extends Command
 
             $config->set('hosts.path', $hostsfile);
 
-            $config->set('options.add.add_to_hosts', $this->confirm('When adding new sites, add the site to vhosts by default?', true));
+            $config->set('options.add.add_to_hosts', $this->confirm('When adding new sites, add the site to hosts file by default?', true));
         }
 
         $output->writeln("Saving configuration to " .WEBDEV_CONFIG_FILE ."...");

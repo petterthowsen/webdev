@@ -15,7 +15,8 @@ class AddCommand extends Command
         $this
             ->setDescription("Add a new site.")
             ->setHelp("Add a new site. This will create a directory, add virtualhosts to apache and edit your hosts file.")
-            ->addArgument("name", InputArgument::REQUIRED, "Name of the site");
+            ->addArgument("name", InputArgument::REQUIRED, "Name of the site")
+            ->addOption('no-database');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -40,6 +41,16 @@ class AddCommand extends Command
         if ($config->get('options.add.create_vhost')) {
             $dir = $config->get('directory.root') .DIRECTORY_SEPARATOR .$name;
             $console->appendVirtualHostsDirective($name, $tld, $dir);
+            $output->writeln('virtualhost section appended to vhosts config file in apache.');
+        }
+
+        
+        if ($config->get('options.add.create_website')) {
+            if ($console->createDatabase($name)) {
+               $output->writeln('Database created');
+            }else {
+                $output->writeln('Database cannot be created.');
+            }
         }
 
         return Command::SUCCESS;
